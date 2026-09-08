@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fulcria-labs.github.io/vault/sitemap.xml
