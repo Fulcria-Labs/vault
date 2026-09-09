@@ -1,4 +1,20 @@
-# The Vault
+# The Vault — Printable Collection Trackers & Grading Guides
 
-Product hub landing page for the Vault printable collection trackers (sports cards, TCG, comics).
-Served via GitHub Pages at https://fulcria-labs.github.io/vault/
+Free, printable inventory trackers and plain-English guides for collectors of sports
+cards, Pokémon/TCG, and comic books. Landing hub served via GitHub Pages:
+
+**➡️ https://fulcria-labs.github.io/vault/**
+
+## Guides
+
+- [How to Track Your Sports Card Collection](https://fulcria-labs.github.io/vault/how-to-track-your-sports-card-collection/)
+- [How to Track Your Pokémon TCG Collection](https://fulcria-labs.github.io/vault/how-to-track-your-pokemon-tcg-collection/)
+- [How to Track Your Comic Book Collection](https://fulcria-labs.github.io/vault/how-to-track-your-comic-book-collection/)
+- [How to Track a PSA Grading Submission](https://fulcria-labs.github.io/vault/how-to-track-a-psa-grading-submission/)
+- [How to Insure Your Card Collection](https://fulcria-labs.github.io/vault/how-to-insure-your-card-collection/)
+- [Which Grading Company Should You Use? PSA vs BGS vs SGC vs CGC](https://fulcria-labs.github.io/vault/which-grading-company-psa-bgs-sgc-cgc/)
+
+## Printable trackers
+
+Companion printable PDF trackers (Card Vault, TCG Vault, Comic Vault) are available at
+[fulcrum46.gumroad.com](https://fulcrum46.gumroad.com).
