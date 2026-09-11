@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Grading Profit Calculator — Is It Worth Grading? (2026) | Fulcria Labs</title>
+<meta name="description" content="Free calculator that tells you whether grading a card is worth it. Enter raw value, expected graded value, grading fee and selling fees to see your break-even price and net profit from grading vs. selling raw. Works for PSA, BGS, SGC and CGC.">
+<link rel="canonical" href="https://fulcria-labs.github.io/vault/card-grading-profit-calculator/">
+<meta name="robots" content="index,follow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fulcria Labs">
+<meta property="og:title" content="Card Grading Profit Calculator — Is It Worth Grading?">
+<meta property="og:description" content="Enter a few numbers and see whether grading pays off: break-even graded price and net profit vs. selling the card raw. Works for PSA, BGS, SGC and CGC.">
+<meta property="og:url" content="https://fulcria-labs.github.io/vault/card-grading-profit-calculator/">
+<meta property="og:image" content="https://fulcria-labs.github.io/vault/img/card-vault.png">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Card Grading Profit Calculator — Is It Worth Grading?">
+<meta name="twitter:description" content="Free tool: see your break-even graded price and net profit from grading vs. selling raw. PSA, BGS, SGC, CGC.">
+<meta name="twitter:image" content="https://fulcria-labs.github.io/vault/img/card-vault.png">
+
+<meta name="theme-color" content="#1a365d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#1a365d; --navy-2:#22406e; --ink:#1a1f2b; --muted:#5b6472;
+    --bg:#f7f8fb; --card:#ffffff; --line:#e6e9ef; --accent:#e0592a; --accent-d:#c74a20;
+    --good:#1f8a4c; --good-bg:#e8f6ee; --warn:#b9821a; --warn-bg:#fbf3e0; --bad:#c0392b; --bad-bg:#fbeceb;
+    --radius:16px;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+
+  header{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;padding:52px 0 56px}
+  header .wrap{max-width:820px}
+  .crumb{font-size:.82rem;color:#a9c2e8;margin-bottom:14px}
+  .crumb a{color:#a9c2e8}
+  header h1{font-size:clamp(1.8rem,4.4vw,2.6rem);font-weight:800;line-height:1.14;letter-spacing:-.02em;max-width:22ch}
+  header p{margin-top:16px;font-size:1.08rem;color:#d7e2f4;max-width:60ch}
+
+  article{padding:40px 0 20px}
+  article h2{font-size:1.4rem;font-weight:800;letter-spacing:-.01em;margin:34px 0 12px;color:var(--navy)}
+  article h3{font-size:1.1rem;font-weight:700;margin:24px 0 8px}
+  article p{margin:0 0 15px;color:#2b3240}
+  article ul,article ol{margin:0 0 16px;padding-left:22px;color:#2b3240}
+  article li{margin-bottom:7px}
+  article strong{color:var(--ink)}
+  .lead{font-size:1.12rem;color:#39414f}
+
+  /* Calculator */
+  .calc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;margin:6px 0 8px;box-shadow:0 1px 3px rgba(20,40,80,.04)}
+  .calc h2{margin-top:0}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px;margin-top:6px}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .field label{display:block;font-size:.88rem;font-weight:600;color:var(--navy);margin-bottom:6px}
+  .field .hint{display:block;font-weight:400;color:var(--muted);font-size:.78rem;margin-top:3px}
+  .inputwrap{position:relative;display:flex;align-items:center}
+  .inputwrap .pre{position:absolute;left:12px;color:var(--muted);font-weight:600;font-size:.95rem;pointer-events:none}
+  .inputwrap .post{position:absolute;right:12px;color:var(--muted);font-weight:600;font-size:.95rem;pointer-events:none}
+  .field input{width:100%;padding:11px 12px 11px 26px;font-size:1rem;font-family:inherit;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);transition:border-color .15s,box-shadow .15s}
+  .field input.pct{padding-left:12px;padding-right:30px}
+  .field input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(224,89,42,.12)}
+
+  .verdict{margin-top:22px;border-radius:12px;padding:18px 20px;border:1px solid var(--line)}
+  .verdict.good{background:var(--good-bg);border-color:#bfe3cd}
+  .verdict.warn{background:var(--warn-bg);border-color:#f0dcae}
+  .verdict.bad{background:var(--bad-bg);border-color:#f2c9c4}
+  .verdict .tag{font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+  .verdict.good .tag{color:var(--good)}
+  .verdict.warn .tag{color:var(--warn)}
+  .verdict.bad .tag{color:var(--bad)}
+  .verdict .headline{font-size:1.3rem;font-weight:800;margin:4px 0 6px;color:var(--ink)}
+  .verdict p{margin:0;color:#2b3240;font-size:.96rem}
+
+  .rows{margin-top:18px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .row{display:flex;justify-content:space-between;align-items:baseline;padding:11px 16px;border-bottom:1px solid var(--line);font-size:.95rem}
+  .row:last-child{border-bottom:none}
+  .row .k{color:var(--muted)}
+  .row .v{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+  .row.total{background:#f2f5fa}
+  .row.total .k{color:var(--navy);font-weight:700}
+  .row.total .v{color:var(--navy);font-size:1.05rem}
+  .v.pos{color:var(--good)} .v.neg{color:var(--bad)}
+
+  .tablewrap{overflow-x:auto;margin:8px 0 20px;border:1px solid var(--line);border-radius:12px}
+  table{border-collapse:collapse;width:100%;font-size:.92rem;background:#fff}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line)}
+  th{background:#f2f5fa;font-weight:700;color:var(--navy)}
+  tr:last-child td{border-bottom:none}
+
+  .callout{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:20px 22px;margin:26px 0}
+  .callout h3{margin-top:0}
+  .callout .cta{display:inline-block;margin-top:12px;background:var(--accent);color:#fff;font-weight:700;padding:11px 18px;border-radius:10px;transition:background .15s ease}
+  .callout .cta:hover{background:var(--accent-d);text-decoration:none}
+  .faq h3{margin-top:20px}
+  footer{padding:36px 0 60px;text-align:center;color:var(--muted);font-size:.86rem}
+  footer a{color:var(--navy);font-weight:600}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Card Grading Profit Calculator",
+  "url": "https://fulcria-labs.github.io/vault/card-grading-profit-calculator/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any (web browser)",
+  "description": "Free calculator that shows whether grading a trading card is worth it: enter raw value, expected graded value, grading fee, shipping and selling fees to see your break-even graded price and net profit from grading vs. selling raw. Works for PSA, BGS, SGC and CGC.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "publisher": {"@type": "Organization", "name": "Fulcria Labs"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "The Vault", "item": "https://fulcria-labs.github.io/vault/"},
+    {"@type": "ListItem", "position": 2, "name": "Card Grading Profit Calculator", "item": "https://fulcria-labs.github.io/vault/card-grading-profit-calculator/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I know if a card is worth grading?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Grading pays off only when the graded card sells for enough more than the raw card to cover the grading fee, shipping and marketplace selling fees. The break-even graded price is the raw value plus the grading fee and shipping, divided by one minus your selling-fee percentage. If your expected graded price clears that number with a margin, grade it; if it's close, the grade risk usually isn't worth it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What costs go into grading a card?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The per-card grading fee for your service tier, shipping to the grader and return shipping/insurance, and — when you sell — the marketplace and payment fees (often around 13 percent on eBay). This calculator adds all of them and compares the net result to simply selling the card raw."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this calculator work for PSA, BGS, SGC and CGC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The math is the same for every grader — enter that company's fee and your expected graded value in its holder. Because the same card can sell for different prices in a PSA, BGS, SGC or CGC slab, run each company you're considering and compare the net profit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the calculator assume I hit my target grade?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It uses the graded value you enter, which assumes the card earns the grade you expect. In reality grading is a gamble — a 9 instead of a 10 can erase the premium. Use a conservative expected graded value, leave a margin above break-even, and track your actual gem rate over time so your estimates get sharper."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="crumb"><a href="/vault/">The Vault</a> › Card Grading Profit Calculator</div>
+    <h1>Card Grading Profit Calculator</h1>
+    <p>Enter a few numbers and see whether grading a card actually pays — your break-even graded price and net profit versus just selling it raw. Works for PSA, BGS, SGC and CGC.</p>
+  </div>
+</header>
+
+<article class="wrap">
+  <div class="calc" role="form" aria-label="Card grading profit calculator">
+    <h2>Run the numbers</h2>
+    <div class="grid">
+      <div class="field">
+        <label for="raw">Raw card value
+          <span class="hint">What it sells for ungraded today (recent comps)</span>
+        </label>
+        <div class="inputwrap"><span class="pre">$</span><input id="raw" type="number" inputmode="decimal" min="0" step="1" value="40"></div>
+      </div>
+      <div class="field">
+        <label for="graded">Expected graded value
+          <span class="hint">Sale price at the grade you expect</span>
+        </label>
+        <div class="inputwrap"><span class="pre">$</span><input id="graded" type="number" inputmode="decimal" min="0" step="1" value="140"></div>
+      </div>
+      <div class="field">
+        <label for="fee">Grading fee (per card)
+          <span class="hint">Your service tier's per-card price</span>
+        </label>
+        <div class="inputwrap"><span class="pre">$</span><input id="fee" type="number" inputmode="decimal" min="0" step="1" value="25"></div>
+      </div>
+      <div class="field">
+        <label for="ship">Shipping both ways
+          <span class="hint">To the grader + insured return</span>
+        </label>
+        <div class="inputwrap"><span class="pre">$</span><input id="ship" type="number" inputmode="decimal" min="0" step="1" value="12"></div>
+      </div>
+      <div class="field">
+        <label for="sellfee">Selling fees
+          <span class="hint">Marketplace + payment %, e.g. eBay ≈ 13%</span>
+        </label>
+        <div class="inputwrap"><input id="sellfee" class="pct" type="number" inputmode="decimal" min="0" max="100" step="0.5" value="13"><span class="post">%</span></div>
+      </div>
+    </div>
+
+    <div id="verdict" class="verdict"><div class="tag"></div><div class="headline"></div><p></p></div>
+
+    <div class="rows">
+      <div class="row"><span class="k">Break-even graded price</span><span class="v" id="breakeven">—</span></div>
+      <div class="row"><span class="k">Net if you sell it raw</span><span class="v" id="netraw">—</span></div>
+      <div class="row"><span class="k">Net if you grade &amp; sell</span><span class="v" id="netgraded">—</span></div>
+      <div class="row total"><span class="k">Extra profit from grading</span><span class="v" id="delta">—</span></div>
+    </div>
+    <p style="font-size:.8rem;color:var(--muted);margin:12px 2px 0">Estimates only. Assumes you hit your expected grade and sell both raw and graded on the same marketplace. Grading fees, tiers and turnaround change often — confirm current numbers with each company.</p>
+  </div>
+
+  <p class="lead">The most expensive grading mistake isn't picking the wrong company — it's grading cards that were never going to pencil out. This calculator settles that in seconds: it nets out every cost and tells you whether the grade earns its keep.</p>
+
+  <h2>How the math works</h2>
+  <p>Grading is worth it only when the <em>extra</em> money from the graded sale beats the <em>extra</em> cost of grading. Selling fees apply either way, so they only bite on the value the grade adds:</p>
+  <ul>
+    <li><strong>Net if you sell raw</strong> = raw value − selling fees on the raw price.</li>
+    <li><strong>Net if you grade &amp; sell</strong> = graded value − selling fees on the graded price − grading fee − shipping.</li>
+    <li><strong>Extra profit from grading</strong> = the difference between those two. If it's comfortably positive, grade it.</li>
+  </ul>
+  <p>The <strong>break-even graded price</strong> is the number your graded card must clear just to come out even:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Break-even graded price</th><td>raw value + (grading fee + shipping) ÷ (1 − selling-fee %)</td></tr>
+  </table></div>
+  <p>Anything above that line is profit; anything below means the grade cost you money. Because grading is a gamble on the grade itself, treat break-even as the floor and insist on a real margin above it before you submit.</p>
+
+  <div class="callout">
+    <h3>Log every submission, learn your gem rate</h3>
+    <p>The calculator tells you if a card <em>should</em> pay off. A <strong>submission log</strong> tells you if it actually did — and over time reveals your real gem rate, the single number that makes every future estimate sharper. <strong>The Card Vault</strong> is an 8-page printable PDF with a PSA/BGS/SGC/CGC grading log, full collection inventory and a buy/sell profit tracker that nets out fees. Instant download, one-time $6, no subscription.</p>
+    <a class="cta" href="https://fulcrum46.gumroad.com/l/cardvault?utm_source=vault&utm_medium=tool&utm_campaign=grading-calc" rel="noopener">Get the Card Vault — $6 →</a>
+    <p style="margin-top:14px;margin-bottom:0;font-size:.92rem;color:var(--muted)">Grade Pok&eacute;mon, One Piece or Magic? See <a href="https://fulcrum46.gumroad.com/l/tcgvault?utm_source=vault&utm_medium=tool&utm_campaign=grading-calc" rel="noopener">The TCG Vault</a>. Comics (CGC/CBCS)? <a href="https://fulcrum46.gumroad.com/l/comicvault?utm_source=vault&utm_medium=tool&utm_campaign=grading-calc" rel="noopener">The Comic Vault</a>.</p>
+  </div>
+
+  <h2>Which company should you even use?</h2>
+  <p>The same card can sell for different prices in a PSA, BGS, SGC or CGC holder — so the "expected graded value" you plug in depends on the grader. If you're not sure which to submit to, read <a href="/vault/which-grading-company-psa-bgs-sgc-cgc/">PSA vs BGS vs SGC vs CGC: which grading company should you use?</a>, then run each option through the calculator above and compare the net profit.</p>
+
+  <h2 class="faq">FAQ</h2>
+  <div class="faq">
+    <h3>How do I know if a card is worth grading?</h3>
+    <p>Grading pays off only when the graded card sells for enough more than the raw card to cover the grading fee, shipping and marketplace selling fees. The break-even graded price is the raw value plus the grading fee and shipping, divided by one minus your selling-fee percentage. If your expected graded price clears that number with a margin, grade it; if it's close, the grade risk usually isn't worth it.</p>
+    <h3>What costs go into grading a card?</h3>
+    <p>The per-card grading fee for your service tier, shipping to the grader and return shipping/insurance, and — when you sell — the marketplace and payment fees (often around 13% on eBay). This calculator adds all of them and compares the net result to simply selling the card raw.</p>
+    <h3>Does this calculator work for PSA, BGS, SGC and CGC?</h3>
+    <p>Yes. The math is the same for every grader — enter that company's fee and your expected graded value in its holder. Because the same card can sell for different prices in each slab, run every company you're considering and compare.</p>
+    <h3>Why does the calculator assume I hit my target grade?</h3>
+    <p>It uses the graded value you enter, which assumes the card earns the grade you expect. Grading is a gamble — a 9 instead of a 10 can erase the premium. Use a conservative expected graded value, leave a margin above break-even, and track your actual gem rate so your estimates get sharper.</p>
+  </div>
+</article>
+
+<div class="callout" id="related-guides">
+  <h3>Keep reading</h3>
+  <ul>
+    <li><a href="/vault/which-grading-company-psa-bgs-sgc-cgc/">PSA vs BGS vs SGC vs CGC: Which Grading Company Should You Use?</a></li>
+    <li><a href="/vault/how-to-track-a-psa-grading-submission/">How to Track a PSA Grading Submission</a></li>
+    <li><a href="/vault/how-to-track-your-sports-card-collection/">How to Track Your Sports Card Collection</a></li>
+  </ul>
+</div>
+
+<footer class="wrap">
+  <p>Tool by <a href="https://fulcria-labs.github.io/">Fulcria Labs</a>, makers of <a href="/vault/">The Vault</a> printable collection trackers. Educational estimates only — grading fees, tiers and turnaround change often; confirm current details with each company and do your own comps before submitting.</p>
+</footer>
+
+<script>
+(function(){
+  var ids=['raw','graded','fee','ship','sellfee'];
+  var el={}; ids.forEach(function(i){el[i]=document.getElementById(i);});
+  var $be=document.getElementById('breakeven'),$nr=document.getElementById('netraw'),
+      $ng=document.getElementById('netgraded'),$d=document.getElementById('delta'),
+      $v=document.getElementById('verdict');
+  function num(x){var n=parseFloat(x);return isFinite(n)&&n>=0?n:0;}
+  function money(n){return (n<0?'-$':'$')+Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+  function calc(){
+    var raw=num(el.raw.value), graded=num(el.graded.value), fee=num(el.fee.value),
+        ship=num(el.ship.value), pct=Math.min(num(el.sellfee.value),99.9)/100;
+    var keep=1-pct;
+    var netRaw=raw*keep;
+    var netGraded=graded*keep-fee-ship;
+    var delta=netGraded-netRaw;
+    var breakeven=raw+(fee+ship)/keep;
+    $be.textContent=money(breakeven);
+    $nr.textContent=money(netRaw);
+    $ng.textContent=money(netGraded);
+    $d.textContent=(delta>=0?'+':'')+money(delta).replace('-','');
+    $d.className='v '+(delta>=0?'pos':'neg');
+    var cls,tag,head,msg;
+    // margin buffer: require the upside to clear costs by a meaningful cushion
+    var costs=fee+ship;
+    if(delta<=0){
+      cls='bad';tag='Leave it raw';head='Grading loses you '+money(Math.abs(delta));
+      msg='At these numbers the graded sale nets less than selling raw. The card needs to fetch at least '+money(breakeven)+' graded just to break even.';
+    } else if(delta < costs*0.5 || delta < 15){
+      cls='warn';tag='Borderline';head='Only '+money(delta)+' upside';
+      msg='Grading barely clears its costs. Since a lower grade can wipe out the premium, this is only worth it if you\'re confident in the grade. Break-even graded price is '+money(breakeven)+'.';
+    } else {
+      cls='good';tag='Worth grading';head='+'+money(delta).replace('-','')+' from grading';
+      msg='The graded sale nets meaningfully more than selling raw, with room above the '+money(breakeven)+' break-even. Confirm the grader\'s current fee and check comps in that holder before submitting.';
+    }
+    $v.className='verdict '+cls;
+    $v.querySelector('.tag').textContent=tag;
+    $v.querySelector('.headline').textContent=head;
+    $v.querySelector('p').textContent=msg;
+  }
+  ids.forEach(function(i){el[i].addEventListener('input',calc);});
+  calc();
+})();
+</script>
+
+</body>
+</html>
