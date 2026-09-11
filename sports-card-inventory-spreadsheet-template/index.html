@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" href="/vault/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/vault/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/vault/apple-touch-icon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sports Card Inventory Spreadsheet: Free Template Structure (Columns, Tabs &amp; Formulas) | Fulcria Labs</title>
+<meta name="description" content="Build a sports card inventory spreadsheet that actually works: the exact columns to use, the three tabs every collector needs, and the profit and portfolio formulas to paste in. Plus when a printable beats a spreadsheet.">
+<link rel="canonical" href="https://fulcria-labs.github.io/vault/sports-card-inventory-spreadsheet-template/">
+<meta name="robots" content="index,follow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Fulcria Labs">
+<meta property="og:title" content="Sports Card Inventory Spreadsheet: Free Template Structure">
+<meta property="og:description" content="The exact columns, tabs and formulas for a sports card inventory spreadsheet — copy the structure, paste the formulas, start logging.">
+<meta property="og:url" content="https://fulcria-labs.github.io/vault/sports-card-inventory-spreadsheet-template/">
+<meta property="og:image" content="https://fulcria-labs.github.io/vault/img/card-vault.png">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sports Card Inventory Spreadsheet: Free Template Structure">
+<meta name="twitter:description" content="The exact columns, tabs and formulas for a sports card inventory spreadsheet.">
+<meta name="twitter:image" content="https://fulcria-labs.github.io/vault/img/card-vault.png">
+
+<meta name="theme-color" content="#1a365d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Structured data: Article + Breadcrumb -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Sports Card Inventory Spreadsheet: Free Template Structure (Columns, Tabs & Formulas)",
+  "description": "The exact columns, tabs and formulas for a sports card inventory spreadsheet, plus when a printable beats a spreadsheet.",
+  "image": "https://fulcria-labs.github.io/vault/img/card-vault.png",
+  "author": {"@type": "Organization", "name": "Fulcria Labs"},
+  "publisher": {"@type": "Organization", "name": "Fulcria Labs"},
+  "mainEntityOfPage": "https://fulcria-labs.github.io/vault/sports-card-inventory-spreadsheet-template/",
+  "datePublished": "2026-09-11",
+  "dateModified": "2026-09-11"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "The Vault", "item": "https://fulcria-labs.github.io/vault/"},
+    {"@type": "ListItem", "position": 2, "name": "Sports Card Inventory Spreadsheet Template", "item": "https://fulcria-labs.github.io/vault/sports-card-inventory-spreadsheet-template/"}
+  ]
+}
+</script>
+
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#1a365d; --navy-2:#22406e; --ink:#1a1f2b; --muted:#5b6472;
+    --bg:#f7f8fb; --card:#ffffff; --line:#e6e9ef; --accent:#e0592a; --accent-d:#c74a20;
+    --radius:16px;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+
+  header{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;padding:52px 0 56px}
+  header .wrap{max-width:820px}
+  .crumb{font-size:.82rem;color:#a9c2e8;margin-bottom:14px}
+  .crumb a{color:#a9c2e8}
+  header h1{font-size:clamp(1.8rem,4.4vw,2.6rem);font-weight:800;line-height:1.14;letter-spacing:-.02em;max-width:24ch}
+  header p{margin-top:16px;font-size:1.08rem;color:#d7e2f4;max-width:60ch}
+
+  article{padding:44px 0 20px}
+  article h2{font-size:1.4rem;font-weight:800;letter-spacing:-.01em;margin:34px 0 12px;color:var(--navy)}
+  article h3{font-size:1.1rem;font-weight:700;margin:24px 0 8px}
+  article p{margin:0 0 15px;color:#2b3240}
+  article ul,article ol{margin:0 0 16px;padding-left:22px;color:#2b3240}
+  article li{margin-bottom:7px}
+  article strong{color:var(--ink)}
+  .lead{font-size:1.12rem;color:#39414f}
+  .tablewrap{overflow-x:auto;margin:8px 0 20px;border:1px solid var(--line);border-radius:12px}
+  table{border-collapse:collapse;width:100%;font-size:.92rem;background:#fff}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line)}
+  th{background:#f2f5fa;font-weight:700;color:var(--navy)}
+  tr:last-child td{border-bottom:none}
+  code{background:#eef1f6;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:.88em;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#243}
+  .callout{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:20px 22px;margin:26px 0}
+  .callout h3{margin-top:0}
+  .callout .cta{display:inline-block;margin-top:12px;background:var(--accent);color:#fff;font-weight:700;padding:11px 18px;border-radius:10px;transition:background .15s ease}
+  .callout .cta:hover{background:var(--accent-d);text-decoration:none}
+  .faq h3{margin-top:20px}
+  footer{padding:36px 0 60px;text-align:center;color:var(--muted);font-size:.86rem}
+  footer a{color:var(--navy);font-weight:600}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="crumb"><a href="/vault/">The Vault</a> › Sports Card Inventory Spreadsheet Template</div>
+    <h1>Sports Card Inventory Spreadsheet: The Template Structure That Actually Holds Up</h1>
+    <p>The exact columns to use, the three tabs every serious collector needs, and the profit and portfolio formulas you can paste straight in.</p>
+  </div>
+</header>
+
+<article class="wrap">
+  <p class="lead">A spreadsheet is the cheapest, most flexible way to track a card collection — but only if it's built right. Most collectors start with a single sheet, twelve random columns, and no formulas, then quit when it turns into a chore. This is the structure that scales from 50 cards to 5,000: three tabs, a tight column set, and four formulas that do the math for you. Copy it into Google Sheets or Excel and you're logging in ten minutes.</p>
+
+  <h2>Tab 1 — Inventory (what you own)</h2>
+  <p>This is the heart of the file: one row per card. Resist the urge to add thirty columns. These are the ones that let you find a card, value it, and prove ownership:</p>
+  <div class="tablewrap">
+  <table>
+    <tr><th>Column</th><th>Example</th><th>Why it's here</th></tr>
+    <tr><td>Player &amp; Year</td><td>Ja'Marr Chase 2021</td><td>Core identity of the card.</td></tr>
+    <tr><td>Set / Parallel</td><td>Prizm Silver</td><td>A base and a /25 parallel are worlds apart.</td></tr>
+    <tr><td>Card #</td><td>#220</td><td>Removes all ambiguity when you look it up.</td></tr>
+    <tr><td>Grade / Condition</td><td>PSA 10 / Raw NM</td><td>Drives value more than almost anything.</td></tr>
+    <tr><td>Purchase Price</td><td>40.00</td><td>Your cost basis — no profit math without it.</td></tr>
+    <tr><td>Current Value</td><td>210.00</td><td>Refreshed from recent comps.</td></tr>
+    <tr><td>Location</td><td>Binder 3 / at PSA</td><td>The field everyone skips and everyone regrets.</td></tr>
+    <tr><td>Date Acquired</td><td>2026-03-14</td><td>Lets you chart growth and hold time.</td></tr>
+  </table>
+  </div>
+  <p>Keep <em>Purchase Price</em> and <em>Current Value</em> as plain numbers (no <code>$</code> typed in the cell) so formulas can total them. Format the column as currency instead.</p>
+
+  <h2>Tab 2 — Grading Submissions (cards in transit)</h2>
+  <p>The moment cards ship to PSA, BGS, SGC or CGC they leave your shelf and enter a black hole for weeks. Keep them on a <em>separate</em> tab — they aren't really "inventory" until they come back, and the economics are a different question. Columns:</p>
+  <ul>
+    <li><strong>Submission # &amp; date sent</strong> — your reference for the whole batch.</li>
+    <li><strong>Service level</strong> (Value, Regular, Express) and <strong>per-card fee</strong>.</li>
+    <li><strong>Declared value</strong> per card.</li>
+    <li><strong>Date returned</strong> and <strong>grade received</strong>.</li>
+  </ul>
+  <p>Not sure who to send to? See <a href="/vault/which-grading-company-psa-bgs-sgc-cgc/">PSA vs BGS vs SGC vs CGC — which grading company to use</a>, and <a href="/vault/how-to-track-a-psa-grading-submission/">how to track a PSA grading submission</a> step by step.</p>
+
+  <h2>Tab 3 — Sales / Flips (what actually made money)</h2>
+  <p>One row per card sold. This is where the profit formula lives, and it's the tab that quietly teaches you which players and price tiers are worth your time.</p>
+
+  <h2>The four formulas that do the work</h2>
+  <p>Paste these into the header row of the relevant tab (syntax is identical in Google Sheets and Excel). Adjust the column letters to match your layout.</p>
+  <div class="tablewrap">
+  <table>
+    <tr><th>What it gives you</th><th>Formula</th></tr>
+    <tr><td>Unrealized gain per card (Inventory tab)</td><td><code>=F2-E2</code> &nbsp;(Current Value − Purchase Price)</td></tr>
+    <tr><td>Total portfolio value</td><td><code>=SUM(F2:F999)</code></td></tr>
+    <tr><td>Total cost basis</td><td><code>=SUM(E2:E999)</code></td></tr>
+    <tr><td>Real net profit on a flip (Sales tab)</td><td><code>=SalePrice-(SalePrice*0.13)-Shipping-GradingFee-PurchasePrice</code></td></tr>
+  </table>
+  </div>
+  <p>That last formula is the one that matters. A card you "bought for $40 and sold for $90" feels like $50 profit — but after ~13% marketplace and payment fees, $5 shipping and an $18 grading cost, your real net is about <strong>$15.30</strong>. Track it honestly across every sale and a pattern emerges fast: what actually makes money versus what just feels productive.</p>
+
+  <h2>Five mistakes that kill a card spreadsheet</h2>
+  <ol>
+    <li><strong>Typing <code>$</code> into value cells</strong> — turns numbers into text and breaks every <code>SUM</code>. Format as currency instead.</li>
+    <li><strong>One giant tab for everything</strong> — mixing owned cards, in-transit submissions and sold cards makes your totals meaningless.</li>
+    <li><strong>No "Location" column</strong> — "where is it?" becomes the question you can't answer once you pass a few hundred cards.</li>
+    <li><strong>Never dating anything</strong> — without acquired/sold dates you can't chart growth or hold time.</li>
+    <li><strong>Letting it go stale</strong> — log pickups and sales the same day; refresh values once a month. A spreadsheet you don't update is just a snapshot of the past.</li>
+  </ol>
+
+  <h2>When a printable beats a spreadsheet</h2>
+  <p>Spreadsheets are unbeatable for sorting, filtering and formulas. But they have real weaknesses: you build and maintain every formula yourself, they're clumsy at the kitchen table or a card show, and a fat-fingered cell can silently corrupt a total. A printable PDF flips those trade-offs — nothing to build, works on paper or on a tablet in GoodNotes/Notability, and it doubles as a physical record that travels with the cards. Plenty of collectors run both: spreadsheet at the desk, printable for shows and shoeboxes.</p>
+
+  <div class="callout">
+    <h3>Don't want to build it? The template's already done.</h3>
+    <p><strong>The Card Vault</strong> is an 8-page printable PDF built around this exact structure: a clean collection inventory, a dedicated PSA/BGS/SGC grading submission log, a buy/sell profit tracker that nets out fees for you, plus wishlist, set-completion and a monthly portfolio-value sheet. Print unlimited copies at home or fill it on a tablet. Instant download, one-time $6, no subscription.</p>
+    <a class="cta" href="https://fulcrum46.gumroad.com/l/cardvault?utm_source=vault&utm_medium=guide&utm_campaign=spreadsheet" rel="noopener">Get the Card Vault — $6 →</a>
+    <p style="margin-top:14px;margin-bottom:0;font-size:.92rem;color:var(--muted)">Collect Pokémon, One Piece or Magic instead? See <a href="https://fulcrum46.gumroad.com/l/tcgvault?utm_source=vault&utm_medium=guide&utm_campaign=spreadsheet" rel="noopener">The TCG Vault</a>. Comics? <a href="https://fulcrum46.gumroad.com/l/comicvault?utm_source=vault&utm_medium=guide&utm_campaign=spreadsheet" rel="noopener">The Comic Vault</a>. Browse all three at <a href="/vault/">The Vault</a>.</p>
+  </div>
+
+  <h2 class="faq">FAQ</h2>
+  <div class="faq">
+    <h3>Is there a free sports card inventory spreadsheet template?</h3>
+    <p>You can build one for free in minutes using the three-tab structure and four formulas above — that's the whole template. If you'd rather not maintain formulas yourself, a done-for-you printable like The Card Vault mirrors the same structure on paper or tablet.</p>
+    <h3>Google Sheets or Excel for a card collection?</h3>
+    <p>Either works — the formulas above are identical in both. Google Sheets edges it for most collectors because it auto-saves, syncs to your phone at a card show, and is free.</p>
+    <h3>How many columns should a card spreadsheet have?</h3>
+    <p>Eight is plenty on the inventory tab. More columns feel thorough but raise the effort per card, which is the number-one reason people abandon their tracker. Track what you'll actually use.</p>
+    <h3>How do I calculate real profit after fees?</h3>
+    <p>Subtract marketplace + payment fees (roughly 13% on most platforms), shipping and supplies, any grading cost, and your original purchase price from the sale price. Our <a href="/vault/card-grading-profit-calculator/">card grading profit calculator</a> does the grading side for you.</p>
+  </div>
+</article>
+
+<div class="callout" id="related-guides">
+  <h3>Keep reading</h3>
+  <ul>
+    <li><a href="/vault/how-to-track-your-sports-card-collection/">How to Track Your Sports Card Collection</a></li>
+    <li><a href="/vault/card-grading-profit-calculator/">Card Grading Profit Calculator</a></li>
+    <li><a href="/vault/how-to-insure-your-card-collection/">How to Insure Your Card Collection</a></li>
+  </ul>
+</div>
+
+<footer class="wrap">
+  <p>Guide by <a href="https://fulcria-labs.github.io/">Fulcria Labs</a>, makers of <a href="/vault/">The Vault</a> printable collection trackers. Educational — do your own comps before buying, selling or grading.</p>
+</footer>
+
+</body>
+</html>
