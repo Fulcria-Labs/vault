@@ -13,6 +13,9 @@ cards, Pokémon/TCG, and comic books. Landing hub served via GitHub Pages:
 - [How to Track a PSA Grading Submission](https://fulcria-labs.github.io/vault/how-to-track-a-psa-grading-submission/)
 - [How to Insure Your Card Collection](https://fulcria-labs.github.io/vault/how-to-insure-your-card-collection/)
 - [Which Grading Company Should You Use? PSA vs BGS vs SGC vs CGC](https://fulcria-labs.github.io/vault/which-grading-company-psa-bgs-sgc-cgc/)
+- [How to Sell Sports Cards: Where to Sell, Fees & What You'll Net](https://fulcria-labs.github.io/vault/how-to-sell-sports-cards/)
+- [Sports Card Inventory Spreadsheet: Free Template Structure](https://fulcria-labs.github.io/vault/sports-card-inventory-spreadsheet-template/)
+- [Card Grading Profit Calculator — Is It Worth Grading?](https://fulcria-labs.github.io/vault/card-grading-profit-calculator/)
 
 ## Printable trackers
 
